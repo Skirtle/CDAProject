@@ -10,8 +10,7 @@ typedef struct {
     int op, r0, r1, r2;
 } Instruction;
 
-void getFileInfo(FILE* file, Instruction program[], int length);
-void printProgram(Instruction program[], int length);
+Instruction* getFileInfo(FILE* file);
 int getProgramLength(FILE* file);
 
 //Main method
@@ -22,7 +21,6 @@ int main(int argc, char *argv[]) {
     * argv[2]: 1st actual argument (should be file name)
     */
 
-    Instruction* program = (Instruction*) malloc(0);
     int programLength;
     char* filename = "testInput.txt";
     FILE* ipf = fopen(filename, "r"); //Opens the command line text file given
@@ -32,17 +30,19 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    programLength = getProgramLength(ipf);
-    getFileInfo(ipf, program, programLength);
-    printProgram(program, programLength);
+    Instruction* program = getFileInfo(ipf);
+
+
     free(program);
+    fclose(ipf);
     return 0;
 }
 
-void getFileInfo(FILE* file, Instruction program[], int length) {
+Instruction* getFileInfo(FILE* file) {
     //Initial variables
     int i, j, c, actualLen;
     int count = 0;
+    int length = getProgramLength(file);
 
     //Get length of file and reset file pointer when done
     while(1) {
@@ -83,23 +83,10 @@ void getFileInfo(FILE* file, Instruction program[], int length) {
         temp.r1 = regStr[i+2] - '0';
         temp.r2 = regStr[i+3] - '0';
         tempProgram[j] = temp;
-        printf("%d: %d %d %d %d\n", i, temp.op, temp.r0, temp.r1, temp.r2);
         j++;
     }
-    realloc(program, length*sizeof(Instruction));
-    for (i = 0; i < length; i++) {
-        program[i] = tempProgram[i];
-    }
-}
-
-
-void printProgram(Instruction program[], int length) {
-    int i;
-    printf("Starting print of %d instructions\n", length);
-    for (i = 0; i < length; i++) {
-        //printf("%d: %d %d %d %d\n", i, program[i].op, program[i].r0, program[i].r1, program[i].r2);
-        printf("%d, ", i);
-    }
+    
+    return tempProgram;
 }
 
 
