@@ -23,16 +23,18 @@ int main(int argc, char *argv[]) {
 
     int programLength;
     char* filename = "testInput.txt";
+    //char* filename = argv[2];
     FILE* ipf = fopen(filename, "r"); //Opens the command line text file given
 
     if (ipf == NULL) { //If the file name is wrong, or file does not exist, return 1 and exit
-        printf("Filename not valid. FILE* ipf is NULL");
+        printf("Filename \"%s\"not valid. FILE* ipf is NULL", filename);
         return 1;
     }
 
     Instruction* program = getFileInfo(ipf);
 
 
+    //Finished, free and close pointers and files. End.
     free(program);
     fclose(ipf);
     return 0;
@@ -55,13 +57,13 @@ Instruction* getFileInfo(FILE* file) {
         }
     }
     Instruction* tempProgram = (Instruction*) calloc(length, sizeof(Instruction));
-    actualLen = count * 2;
+    actualLen = length * 8; //Funky math, but this is right.
     rewind(file);
 
     //Create new variables and reset file pointer
     Instruction ins[length];
     char fullString[actualLen];
-    char regStr[count];
+    char regStr[length*4];
     fgets(fullString, actualLen, file);
     rewind(file);
 
@@ -76,7 +78,7 @@ Instruction* getFileInfo(FILE* file) {
 
     //Convert normalized string to instructions
     j = 0;
-    for (i = 0; i < count; i+=4) {
+    for (i = 0; i < 4*length; i+=4) {
         Instruction temp;
         temp.op = regStr[i+0] - '0';
         temp.r0 = regStr[i+1] - '0';
@@ -92,19 +94,19 @@ Instruction* getFileInfo(FILE* file) {
 
 int getProgramLength(FILE* file) {
     //Initial variables
-    int i, j, progLen, c, actualLen;
+    int c;
     int count = 0;
 
     //Get length of file and reset file pointer when done
     while(1) {
         c = fgetc(file);
-        if (c == EOF || c == '\n') {
+        if (c == EOF || c == '\n') { //Break when new line is found, code should be on one line
             break;
         }
-        if (c != ' ') {
+        if (c != ' ') { //Ignore spaces
             count++;
         }
     }
-    rewind(file);
-    return count/4;
+    rewind(file); //Reset the pointer to the start of the file
+    return count/4; //count/4 is the amount of instructions given, as every 4 digits is one instruction
 }
