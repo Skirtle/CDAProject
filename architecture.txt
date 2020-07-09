@@ -1,0 +1,10 @@
+Opcode      instruction      meaning                        description
+1           lw               load word                      lw Rx 0 addr
+2           add              add                            add Rx Ry Rz
+3           sw               store word                     sw Rx 0 addr
+4           sub              subtract                       sub Rx Ry Rz
+5           sio1             input                          sio1 Rx 0 5 //Only works with R0
+6           sio2             output                         sio2 Rx 0 9 //Only works with R0
+7           sio3             end of program                 sio3 0 0 0
+8           jmp              jump uncondicional             jmp 0 0 addr
+9           beqz             If Rx = 0 {pc = pc + 4}        beq Rx 0 0 //Only works with R0

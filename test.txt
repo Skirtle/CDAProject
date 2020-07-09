@@ -1,4 +1,0 @@
-hello
-this is line two
-now three
-crazy
