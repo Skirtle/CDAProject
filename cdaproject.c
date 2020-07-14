@@ -50,11 +50,7 @@ int main(int argc, char *argv[]) {
                 RF[IM[i].r0] = RF[IM[i].r1] - RF[IM[i].r2];
                 break;
             case 5:
-<<<<<<< HEAD
-
-=======
                 
->>>>>>> f711c4727ff69bc694fd11eaebc5a98b8fb2728c
                 break;
             case 6:
 
