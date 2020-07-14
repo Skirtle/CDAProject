@@ -30,6 +30,7 @@ int main(int argc, char *argv[]) {
 
     Instruction* program = getFileInfo(ipf);
     fclose(ipf);
+
     
     int DM[16];
     int RF[8];
