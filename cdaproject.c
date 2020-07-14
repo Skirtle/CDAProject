@@ -70,7 +70,9 @@ int main(int argc, char *argv[]) {
 
                 break;
             case 9:
-
+                if (IM[PC].r0 == 0) {
+                    PC += 4;
+                }
                 break;
         }
         if(halt) {
