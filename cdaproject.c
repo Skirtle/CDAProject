@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
     for(int i = 0; i < programLength; i++) {
         switch(IM[i].op) {
             case 0:
-                RF[IM[i].r2] = IM[i].r0;
+                //RF[IM[i].r2] = IM[i].r0;
                 RF[IM[i].r0] = DM[IM[i].r2];
                 break;
             case 1:
@@ -50,7 +50,7 @@ int main(int argc, char *argv[]) {
 
                 break;
             case 4:
-
+                RF[IM[i].r0] = RF[IM[i].r1] - RF[IM[i].r2];
                 break;
             case 5:
 
