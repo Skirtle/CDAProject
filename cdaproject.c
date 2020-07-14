@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
                 DM[IM[i].r2] = IM[i].r0;
                 break;
             case 1:
-
+                RF[IM[i].r0] = RF[IM[i].r1] + RF[IM[i].r2];
                 break;
             case 2:
 
