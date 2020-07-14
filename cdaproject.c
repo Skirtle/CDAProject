@@ -19,7 +19,6 @@ int main(int argc, char *argv[]) {
     * argv[0]: .exe location
     * argv[1]: 1st actual argument (should be file name)
     */
-
     int programLength;
     char* filename = "testInput.txt";
     //char* filename = argv[1];
