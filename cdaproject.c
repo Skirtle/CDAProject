@@ -33,8 +33,8 @@ int main(int argc, char *argv[]) {
     int programLength = getProgramLength(ipf);
     fclose(ipf);
 
-    int DM[16];
-    int RF[8];
+    int DM[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    int RF[] = {0, 0, 0, 0, 0, 0, 0, 0};
     int halt = 0;
     unsigned int PC = 0;
     
@@ -71,7 +71,30 @@ int main(int argc, char *argv[]) {
         }
     }
     
+    printf("\nAssembling Program...\nProgram Assembled\n\nRun.\n\n");
+    
     while(1) {
+        
+        printf("PC = %d | RF = [", PC * 4);
+        for(int i = 0; i < 8; i++) {
+            if(i != 7) {
+                printf("%d, ", RF[i]);
+            }
+            else {
+                printf("%d", RF[i]);
+            }
+        }
+        printf("] | DM = [");
+        for(int i = 0; i < 16; i++) {
+            if(i != 15) {
+                printf("%d, ", DM[i]);
+            }
+            else {
+                printf("%d", DM[i]);
+            }
+        }
+        printf("]\n");
+        
         switch(IM[PC].op) {
             case 1:
                 RF[IM[PC].r0] = DM[IM[PC].r2];
