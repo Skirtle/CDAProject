@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 //Defines and globals
+#define MAX_PROGRAM_LENGTH 125
 
 //Struct(s)
 typedef struct {
@@ -18,8 +19,9 @@ int main(int argc, char *argv[]) {
     * argv[0]: .exe location
     * argv[1]: 1st actual argument (should be file name)
     */
-    char* filename = "testInput.txt";
-    //char* filename = argv[1];
+
+    //char* filename = "testInput.txt";
+    char* filename = argv[1];
     FILE* ipf = fopen(filename, "r"); //Opens the command line text file given
 
     if (ipf == NULL) { //If the file name is wrong, or file does not exist, return 1 and exit
@@ -30,7 +32,7 @@ int main(int argc, char *argv[]) {
     Instruction* IM = getFileInfo(ipf);
     int programLength = getProgramLength(ipf);
     fclose(ipf);
-    
+
     int DM[16];
     int RF[8];
     int halt = 0;
