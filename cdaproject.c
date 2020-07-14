@@ -30,6 +30,9 @@ int main(int argc, char *argv[]) {
 
     Instruction* program = getFileInfo(ipf);
     fclose(ipf);
+    
+    int DM[16];
+    int RF[8];
 
     //Finished, free and close pointers and files. End.
     free(program);
