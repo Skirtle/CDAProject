@@ -17,13 +17,12 @@ int getProgramLength(FILE* file);
 int main(int argc, char *argv[]) {
     /* Helpful information
     * argv[0]: .exe location
-    * argv[1]: argument count
-    * argv[2]: 1st actual argument (should be file name)
+    * argv[1]: 1st actual argument (should be file name)
     */
 
     int programLength;
     char* filename = "testInput.txt";
-    //char* filename = argv[2];
+    //char* filename = argv[1];
     FILE* ipf = fopen(filename, "r"); //Opens the command line text file given
 
     if (ipf == NULL) { //If the file name is wrong, or file does not exist, return 1 and exit
