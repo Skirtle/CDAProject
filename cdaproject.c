@@ -3,7 +3,6 @@
 #include <stdlib.h>
 
 //Defines and globals
-#define MAX_PROGRAM_LENGTH 120
 
 //Struct(s)
 typedef struct {
