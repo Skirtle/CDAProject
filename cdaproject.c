@@ -77,7 +77,7 @@ int main(int argc, char *argv[]) {
     while(1) {
         
         printf("PC = %d | RF = [", PC * 4);
-        for(int i = 0; i < 8; i++) {
+        for(i = 0; i < 8; i++) {
             if(i != 7) {
                 printf("%d, ", RF[i]);
             }
@@ -86,7 +86,7 @@ int main(int argc, char *argv[]) {
             }
         }
         printf("] | DM = [");
-        for(int i = 0; i < 16; i++) {
+        for(i = 0; i < 16; i++) {
             if(i != 15) {
                 printf("%d, ", DM[i]);
             }
