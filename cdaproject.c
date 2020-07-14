@@ -56,7 +56,6 @@ int main(int argc, char *argv[]) {
                 break;
             case 5:
                 scanf("%d", &RF[IM[PC].r0]);
-                printf("Debug: %d\n", RF[IM[PC].r0]);
                 PC += 1;
                 break;
             case 6:
