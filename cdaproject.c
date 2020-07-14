@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
     }
 
     //Finished, free and close pointers and files. End.
-    free(program);
+    free(IM);
     return 0;
 }
 
