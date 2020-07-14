@@ -33,6 +33,7 @@ int main(int argc, char *argv[]) {
     
     int DM[16];
     int RF[8];
+    int halt = 0;
     
     for(int i = 0; i < programLength; i++) {
         switch(IM[i].op) {
@@ -56,7 +57,7 @@ int main(int argc, char *argv[]) {
                 printf("%d\n", RF[IM[i].r0]);
                 break;
             case 7:
-
+                halt = 1;
                 break;
             case 8:
 
@@ -64,6 +65,9 @@ int main(int argc, char *argv[]) {
             case 9:
                 
                 break;
+        }
+        if(halt) {
+            break;
         }
     }
 
