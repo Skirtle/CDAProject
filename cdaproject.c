@@ -22,6 +22,7 @@ int main(int argc, char *argv[]) {
 
     //char* filename = "testInput.txt";
     char* filename = argv[1];
+    int i;
     FILE* ipf = fopen(filename, "r"); //Opens the command line text file given
 
     if (ipf == NULL) { //If the file name is wrong, or file does not exist, return 1 and exit
@@ -38,7 +39,7 @@ int main(int argc, char *argv[]) {
     int halt = 0;
     unsigned int PC = 0;
     
-    for(int i = 0; i < programLength; i++) {
+    for(i = 0; i < programLength; i++) {
         printf("%d %d %d %d", IM[i].op, IM[i].r0, IM[i].r1, IM[i].r2);
         switch(IM[i].op) {
             case 1:
