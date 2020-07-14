@@ -18,7 +18,6 @@ int main(int argc, char *argv[]) {
     * argv[0]: .exe location
     * argv[1]: 1st actual argument (should be file name)
     */
-    int programLength;
     char* filename = "testInput.txt";
     //char* filename = argv[1];
     FILE* ipf = fopen(filename, "r"); //Opens the command line text file given
@@ -28,12 +27,16 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    Instruction* program = getFileInfo(ipf);
+    Instruction* IM = getFileInfo(ipf);
+    int programLength = getProgramLength(ipf);
     fclose(ipf);
-
     
     int DM[16];
     int RF[8];
+    
+    for(int i = 0; i < programLength; i++) {
+        
+    }
 
     //Finished, free and close pointers and files. End.
     free(program);
