@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
     for(int i = 0; i < programLength; i++) {
         switch(IM[i].op) {
             case 0:
-
+                DM[IM[i].r2] = IM[i].r0;
                 break;
             case 1:
 
