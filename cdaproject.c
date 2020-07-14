@@ -67,7 +67,7 @@ int main(int argc, char *argv[]) {
                 PC += 1;
                 break;
             case 8:
-
+                PC = IM[PC].r2;
                 break;
             case 9:
                 if (IM[PC].r0 == 0) {
