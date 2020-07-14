@@ -36,29 +36,29 @@ int main(int argc, char *argv[]) {
     
     for(int i = 0; i < programLength; i++) {
         switch(IM[i].op) {
-            case 0:
+            case 1:
                 //RF[IM[i].r2] = IM[i].r0;
                 RF[IM[i].r0] = DM[IM[i].r2];
                 break;
-            case 1:
+            case 2:
                 RF[IM[i].r0] = RF[IM[i].r1] + RF[IM[i].r2];
                 break;
-            case 2:
+            case 3:
                 DM[IM[i].r2] = RF[IM[i].r0];
                 break;
-            case 3:
-
-                break;
             case 4:
-                RF[IM[i].r0] = RF[IM[i].r1] - RF[IM[i].r2];
+
                 break;
             case 5:
-
+                RF[IM[i].r0] = RF[IM[i].r1] - RF[IM[i].r2];
                 break;
             case 6:
 
                 break;
             case 7:
+
+                break;
+            case 8:
 
                 break;
         }
