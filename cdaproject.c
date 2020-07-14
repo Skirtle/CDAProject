@@ -53,7 +53,7 @@ int main(int argc, char *argv[]) {
                 scanf("%d", RF[IM[i].r0]);
                 break;
             case 6:
-
+                printf("%d\n", RF[IM[i].r0]);
                 break;
             case 7:
 
