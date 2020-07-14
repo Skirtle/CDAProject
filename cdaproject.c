@@ -34,36 +34,43 @@ int main(int argc, char *argv[]) {
     int DM[16];
     int RF[8];
     int halt = 0;
-    
-    for(int i = 0; i < programLength; i++) {
-        switch(IM[i].op) {
+    unsigned int PC = 0;
+
+    while(1) {
+        switch(IM[PC].op) {
             case 1:
-                //RF[IM[i].r2] = IM[i].r0;
-                RF[IM[i].r0] = DM[IM[i].r2];
+                RF[IM[PC].r0] = DM[IM[PC].r2];
+                PC += 1;
                 break;
             case 2:
-                RF[IM[i].r0] = RF[IM[i].r1] + RF[IM[i].r2];
+                RF[IM[PC].r0] = RF[IM[PC].r1] + RF[IM[PC].r2];
+                PC += 1;
                 break;
             case 3:
-                DM[IM[i].r2] = RF[IM[i].r0];
+                DM[IM[PC].r2] = RF[IM[PC].r0];
+                PC += 1;
                 break;
             case 4:
-                RF[IM[i].r0] = RF[IM[i].r1] - RF[IM[i].r2];
+                RF[IM[PC].r0] = RF[IM[PC].r1] - RF[IM[PC].r2];
+                PC += 1;
                 break;
             case 5:
-                scanf("%d", RF[IM[i].r0]);
+                scanf("%d", RF[IM[PC].r0]);
+                PC += 1;
                 break;
             case 6:
-                printf("%d\n", RF[IM[i].r0]);
+                printf("%d\n", RF[IM[PC].r0]);
+                PC += 1;
                 break;
             case 7:
                 halt = 1;
+                PC += 1;
                 break;
             case 8:
 
                 break;
             case 9:
-                
+
                 break;
         }
         if(halt) {
