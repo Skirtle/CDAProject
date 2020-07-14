@@ -38,6 +38,7 @@ int main(int argc, char *argv[]) {
         switch(IM[i].op) {
             case 0:
                 RF[IM[i].r2] = IM[i].r0;
+                RF[IM[i].r0] = DM[IM[i].r2];
                 break;
             case 1:
                 RF[IM[i].r0] = RF[IM[i].r1] + RF[IM[i].r2];
