@@ -15,7 +15,7 @@ typedef struct {
 } Instruction;
 
 //Function prototypes
-void getFileInfo(FILE* file, Instruction* im, int *x);
+Instruction* getFileInfo(FILE* file);
 
 //Main method
 int main(int argc, char *argv[]) {
@@ -33,9 +33,8 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    Instruction* IM;
-    int programLength;
-    getFileInfo(ipf, IM, &programLength);
+    Instruction* IM = getFileInfo(ipf);
+    int programLength = sizeof(IM)/sizeof(Instruction);
     fclose(ipf);
 
     int DM[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -319,7 +318,7 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-void getFileInfo(FILE* file, Instruction* im, int *x) {
+Instruction* getFileInfo(FILE* file) {
     //Initial variables
     int i, j, c, actualLen;
     int count = 0, length = 0;
@@ -335,9 +334,8 @@ void getFileInfo(FILE* file, Instruction* im, int *x) {
         }
     }
     length = count/4;
-    x = &length;
-    //Instruction* tempProgram = (Instruction*) calloc(length, sizeof(Instruction));
-    Instruction tempProgram[MAX_PROGRAM_SIZE];
+    Instruction* tempProgram = (Instruction*) calloc(length, sizeof(Instruction));
+    //Instruction tempProgram[MAX_PROGRAM_SIZE];
     actualLen = length * 8; //Funky math, but this is right.
     rewind(file);
 
@@ -368,6 +366,6 @@ void getFileInfo(FILE* file, Instruction* im, int *x) {
         tempProgram[j] = temp;
         j++;
     }
-
-    im = tempProgram;
+    
+    return tempProgram;
 }
