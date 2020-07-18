@@ -14,6 +14,7 @@ typedef struct {
     int op, r0, r1, r2;
 } Instruction;
 
+//Function prototypes
 Instruction* getFileInfo(FILE* file);
 
 //Main method
