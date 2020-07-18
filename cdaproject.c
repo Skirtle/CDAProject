@@ -24,8 +24,8 @@ int main(int argc, char *argv[]) {
     * argv[1]: 1st actual argument (should be file name)
     */
 
-    //char* filename = "testInput.txt";
-    char* filename = argv[1];
+    char* filename = "mult.txt";
+    //char* filename = argv[1];
     FILE* ipf = fopen(filename, "r"); //Opens the command line text file given
 
     if (ipf == NULL) { //If the file name is wrong, or file does not exist, return 1 and exit
@@ -348,12 +348,15 @@ Instruction* getFileInfo(FILE* file, int *len) {
     rewind(file);
 
     //Normalize string
-    j = 0;
+    /*j = 0;
     for (i = 0; i < actualLen; i++) {
         if (fullString[i] != ' ') {
             regStr[j] = fullString[i];
             j++;
         }
+    }*/
+    for (i = 0; i < length; i++) {
+        fscanf(file, "%d", regStr[i]);
     }
 
     //Convert normalized string to instructions
