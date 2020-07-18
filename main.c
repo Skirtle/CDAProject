@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
     }
 
     Instruction* IM = getFileInfo(ipf);
-    int programLength = getProgramLength(ipf);
+    int programLength = sizeof(IM)/sizeof(Instruction);
     fclose(ipf);
 
     int DM[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
