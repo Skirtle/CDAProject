@@ -340,7 +340,7 @@ Instruction* getFileInfo(FILE* file, int *len) {
     rewind(file);
 
     Instruction temp;
-    for (int i = 0; i < length; i++) {
+    for (i = 0; i < length; i++) {
         fscanf(file, "%d %d %d %d", &temp.op, &temp.r0, &temp.r1, &temp.r2);
         tempProgram[i] = temp;
     }
