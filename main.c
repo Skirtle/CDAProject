@@ -48,34 +48,34 @@ int main(int argc, char *argv[]) {
     unsigned int i;
 
     for(i = 0; i < programLength; i++) {
-        printf("%d %d %d %d", IM[i].op, IM[i].r0, IM[i].r1, IM[i].r2);
+        printf("%d %d %d %d   ", IM[i].op, IM[i].r0, IM[i].r1, IM[i].r2);
         switch(IM[i].op) {
             case 1:
-                printf("\t\tlw %d %d %d\n", IM[i].r0, IM[i].r1, IM[i].r2);
+                printf("\tlw %d %d %d\n", IM[i].r0, IM[i].r1, IM[i].r2);
                 break;
             case 2:
-                printf("\t\tadd %d %d %d\n", IM[i].r0, IM[i].r1, IM[i].r2);
+                printf("\tadd %d %d %d\n", IM[i].r0, IM[i].r1, IM[i].r2);
                 break;
             case 3:
-                printf("\t\tsw %d %d %d\n", IM[i].r0, IM[i].r1, IM[i].r2);
+                printf("\tsw %d %d %d\n", IM[i].r0, IM[i].r1, IM[i].r2);
                 break;
             case 4:
-                printf("\t\tsub %d %d %d\n", IM[i].r0, IM[i].r1, IM[i].r2);
+                printf("\tsub %d %d %d\n", IM[i].r0, IM[i].r1, IM[i].r2);
                 break;
             case 5:
-                printf("\t\tsio1 %d %d %d\n", IM[i].r0, IM[i].r1, IM[i].r2);
+                printf("\tsio1 %d %d %d\n", IM[i].r0, IM[i].r1, IM[i].r2);
                 break;
             case 6:
-                printf("\t\tsio2 %d %d %d\n", IM[i].r0, IM[i].r1, IM[i].r2);
+                printf("\tsio2 %d %d %d\n", IM[i].r0, IM[i].r1, IM[i].r2);
                 break;
             case 7:
-                printf("\t\tsio3 %d %d %d\n", IM[i].r0, IM[i].r1, IM[i].r2);
+                printf("\tsio3 %d %d %d\n", IM[i].r0, IM[i].r1, IM[i].r2);
                 break;
             case 8:
-                printf("\t\tjmp %d %d %d\n", IM[i].r0, IM[i].r1, IM[i].r2);
+                printf("\tjmp %d %d %d\n", IM[i].r0, IM[i].r1, IM[i].r2);
                 break;
             case 9:
-                printf("\t\tbeqz %d %d %d\n", IM[i].r0, IM[i].r1, IM[i].r2);
+                printf("\tbeqz %d %d %d\n", IM[i].r0, IM[i].r1, IM[i].r2);
                 break;
         }
     }
@@ -320,7 +320,7 @@ int main(int argc, char *argv[]) {
 
 Instruction* getFileInfo(FILE* file, int *len) {
     //Initial variables
-    int i, j, c, actualLen;
+    int i, c, actualLen;
     int count = 0, length = 0;
 
     //Get length of file and reset file pointer when done
