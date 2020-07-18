@@ -15,7 +15,7 @@ typedef struct {
 } Instruction;
 
 //Function prototypes
-Instruction* getFileInfo(FILE* file);
+void getFileInfo(FILE* file, Instruction* im, int *x);
 
 //Main method
 int main(int argc, char *argv[]) {
@@ -33,8 +33,9 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    Instruction* IM = getFileInfo(ipf);
-    int programLength = sizeof(IM)/sizeof(Instruction);
+    Instruction* IM;
+    int programLength;
+    getFileInfo(ipf, IM, &programLength);
     fclose(ipf);
 
     int DM[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -318,7 +319,7 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-Instruction* getFileInfo(FILE* file) {
+void getFileInfo(FILE* file, Instruction* im, int *x) {
     //Initial variables
     int i, j, c, actualLen;
     int count = 0, length = 0;
@@ -334,6 +335,7 @@ Instruction* getFileInfo(FILE* file) {
         }
     }
     length = count/4;
+    x = &length;
     //Instruction* tempProgram = (Instruction*) calloc(length, sizeof(Instruction));
     Instruction tempProgram[MAX_PROGRAM_SIZE];
     actualLen = length * 8; //Funky math, but this is right.
@@ -366,6 +368,6 @@ Instruction* getFileInfo(FILE* file) {
         tempProgram[j] = temp;
         j++;
     }
-    
-    return tempProgram;
+
+    im = tempProgram;
 }
