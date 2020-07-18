@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
     FILE* ipf = fopen(filename, "r"); //Opens the command line text file given
 
     if (ipf == NULL) { //If the file name is wrong, or file does not exist, return 1 and exit
-        printf("Filename \"%s\"not valid. FILE* ipf is NULL", filename);
+        printf("Filename \"%s\" not valid. FILE* ipf is NULL", filename);
         return 1;
     }
 
