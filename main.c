@@ -6,9 +6,6 @@ CDA Programming Project. Code Written by Shawn Guydeene and Dalton Kajander
 #include <stdio.h>
 #include <stdlib.h>
 
-//Defines and globals
-#define MAX_PROGRAM_LENGTH 125
-
 //Struct(s)
 typedef struct {
     int op, r0, r1, r2;
