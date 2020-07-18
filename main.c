@@ -6,6 +6,9 @@ CDA Programming Project. Code Written by Shawn Guydeene and Dalton Kajander
 #include <stdio.h>
 #include <stdlib.h>
 
+//Globals and defines
+#define MAX_PROGRAM_SIZE 125
+
 //Struct(s)
 typedef struct {
     int op, r0, r1, r2;
@@ -330,7 +333,8 @@ Instruction* getFileInfo(FILE* file) {
         }
     }
     length = count/4;
-    Instruction* tempProgram = (Instruction*) calloc(length, sizeof(Instruction));
+    //Instruction* tempProgram = (Instruction*) calloc(length, sizeof(Instruction));
+    Instruction tempProgram[MAX_PROGRAM_SIZE];
     actualLen = length * 8; //Funky math, but this is right.
     rewind(file);
 
