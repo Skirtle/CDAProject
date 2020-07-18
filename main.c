@@ -321,8 +321,7 @@ int main(int argc, char *argv[]) {
 Instruction* getFileInfo(FILE* file) {
     //Initial variables
     int i, j, c, actualLen;
-    int count = 0;
-    int length = getProgramLength(file);
+    int count = 0, length = 0;
 
     //Get length of file and reset file pointer when done
     while(1) {
@@ -334,6 +333,7 @@ Instruction* getFileInfo(FILE* file) {
             count++;
         }
     }
+    length = count/4;
     Instruction* tempProgram = (Instruction*) calloc(length, sizeof(Instruction));
     actualLen = length * 8; //Funky math, but this is right.
     rewind(file);
