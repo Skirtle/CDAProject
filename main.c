@@ -12,7 +12,6 @@ typedef struct {
 } Instruction;
 
 Instruction* getFileInfo(FILE* file);
-int getProgramLength(FILE* file);
 
 //Main method
 int main(int argc, char *argv[]) {
@@ -364,24 +363,4 @@ Instruction* getFileInfo(FILE* file) {
     }
     
     return tempProgram;
-}
-
-
-int getProgramLength(FILE* file) {
-    //Initial variables
-    int c;
-    int count = 0;
-
-    //Get length of file and reset file pointer when done
-    while(1) {
-        c = fgetc(file);
-        if (c == EOF || c == '\n') { //Break when new line is found, code should be on one line
-            break;
-        }
-        if (c != ' ') { //Ignore spaces
-            count++;
-        }
-    }
-    rewind(file); //Reset the pointer to the start of the file
-    return count/4; //count/4 is the amount of instructions given, as every 4 digits is one instruction
 }
